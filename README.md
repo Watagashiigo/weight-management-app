@@ -168,3 +168,6 @@ cp .env.example .env
 python manage.py migrate
 python manage.py runserver
 
+### 変更試し
+
+gitの使い方を学習中。
