@@ -171,3 +171,5 @@ python manage.py runserver
 ### 変更試し
 
 gitの使い方を学習中。
+
+gitの使い方を再学習。
