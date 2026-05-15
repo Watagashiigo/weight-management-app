@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Login / Register{% endblock %}
+
+{% block body_class %}auth-page{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-background">
+  <div class="auth-panel">
+
+    <div class="auth-tabs">
+      <button type="button" class="tab-button active" id="loginTab">Login</button>
+      <button type="button" class="tab-button" id="registerTab">Register</button>
+    </div>
+
+    <div class="auth-content">
+
+      <section class="auth-section login-section">
+        <h1>Welcome Back</h1>
+        <div class="title-line"></div>
+        <p class="subtitle">今日も記録して、身体を前に進めよう。</p>
+
+        <form method="post" class="auth-form">
+          {% csrf_token %}
+          <input type="hidden" name="form_type" value="login">
+
+          <div class="input-group">
+            <span class="input-icon">👤</span>
+            {{ login_form.username }}
+          </div>
+
+          <div class="input-group">
+            <span class="input-icon">🔒</span>
+            {{ login_form.password }}
+          </div>
+
+          <button type="submit" class="main-button">Login</button>
+        </form>
+
+        <div class="switch-area">
+          <span>アカウントがない場合</span>
+          <button type="button" class="switch-button" id="showRegister">新規登録</button>
+        </div>
+      </section>
+
+      <div class="center-badge">
+        <span>🏋️</span>
+      </div>
+
+      <section class="auth-section register-section">
+        <h1>Create Account</h1>
+        <div class="title-line"></div>
+        <p class="subtitle">筋トレと体重管理を、習慣にする。</p>
+
+        <form method="post" class="auth-form">
+          {% csrf_token %}
+          <input type="hidden" name="form_type" value="register">
+
+          <div class="input-group">
+            <span class="input-icon">👤</span>
+            {{ register_form.username }}
+          </div>
+
+          <div class="input-group">
+            <span class="input-icon">✉️</span>
+            {{ register_form.email }}
+          </div>
+
+          <div class="input-group">
+            <span class="input-icon">🔒</span>
+            {{ register_form.password }}
+          </div>
+
+          <div class="input-group">
+            <span class="input-icon">🔒</span>
+            {{ register_form.password_confirm }}
+          </div>
+
+          <button type="submit" class="main-button">Register</button>
+        </form>
+
+        <div class="switch-area">
+          <span>すでにアカウントがある場合</span>
+          <button type="button" class="switch-button" id="showLogin">ログイン</button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="auth-footer">
+    🏋️ Weight Training & Body Management
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/auth.js' %}"></script>
+{% endblock %}

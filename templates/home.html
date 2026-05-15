@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="home-page" id="homePage">
+
+  <header class="home-header">
+    <div>
+      <h1>Weight Training Dashboard</h1>
+      <p>{{ request.user.username }} さん、今日も記録を積み上げましょう。</p>
+    </div>
+
+    <nav>
+      <button id="themeToggle">Dark Mode</button>
+      <a href="{% url 'logout' %}">Logout</a>
+    </nav>
+  </header>
+
+  <main class="dashboard">
+    <section class="hero-card">
+      <h2>今日の体重を記録</h2>
+      <p>体重・日時・体重計の画像を保存できます。</p>
+      <button>記録する</button>
+    </section>
+
+    <section class="card">
+      <h2>筋トレ推奨</h2>
+      <p>体重管理だけでなく、筋トレ習慣もサポートします。</p>
+      <ul>
+        <li>腕立て伏せ 10回 × 3セット</li>
+        <li>スクワット 15回 × 3セット</li>
+        <li>プランク 30秒 × 3セット</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>アチーブメント</h2>
+      <p>「継続7日」「目標体重達成」などを表示予定。</p>
+    </section>
+
+    <section class="card">
+      <h2>記録グラフ</h2>
+      <p>体重推移を折れ線グラフで表示予定。</p>
+    </section>
+  </main>
+
+</div>
+
+<script>
+  const homePage = document.getElementById("homePage");
+  const themeToggle = document.getElementById("themeToggle");
+
+  themeToggle.addEventListener("click", () => {
+    homePage.classList.toggle("dark");
+  });
+</script>
+{% endblock %}
